@@ -1,0 +1,48 @@
+; block warning 26, 27, 32, 6
+(env
+ (dev     (flags (:standard -w +a-4-9-40-41-42-44-45-48-27-32-26-6-67)))
+ (release (flags (:standard -w +a-4-9-40-41-42-44-45-48-27-32-26-6-67))))
+
+(copy_files# utils/*.ml{,i})
+(copy_files# file_formats/*.ml{,i})
+(copy_files# parsing/*.ml{,i})
+(copy_files# typing/*.ml{,i})
+(copy_files# driver/*.ml{,i})
+
+(library
+ (name ocaml_parser)
+ (public_name ocaml_parser)
+ (flags (:standard -principal))
+ (modules_without_implementation
+   annot asttypes outcometree parsetree)
+ (modules
+   ;; UTILS
+   config
+   build_path_prefix_map misc identifiable numbers arg_helper clflags
+   profile terminfo ccomp warnings consistbl strongly_connected_components
+   targetint load_path int_replace_polymorphic_compare binutils local_store
+
+   ;; TYPING
+   ident path primitive types btype oprint subst predef datarepr
+   cmi_format persistent_env env type_immediacy
+   typedtree printtyped ctype printtyp includeclass mtype envaux includecore
+   tast_iterator tast_mapper cmt_format untypeast includemod
+   typetexp patterns printpat parmatch stypes typedecl rec_check
+   typecore
+   typeclass typemod typedecl_variance typedecl_properties typedecl_immediacy
+   typedecl_unboxed typedecl_separability cmt2annot
+   ; manual update: mli only files
+   annot outcometree
+
+   ;; PARSING
+   location longident docstrings syntaxerr ast_helper camlinternalMenhirLib
+   parser lexer parse printast pprintast ast_mapper ast_iterator attr_helper
+   builtin_attributes ast_invariants depend
+   ; manual update: mli only files
+   asttypes parsetree
+
+   ;; DRIVER
+   pparse
+   frontend
+ )
+)
