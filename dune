@@ -1,7 +1,7 @@
 ; block warning 26, 27, 32, 6
 (env
- (dev     (flags (:standard -w +a-4-9-40-41-42-44-45-48-27-32-26-6-67)))
- (release (flags (:standard -w +a-4-9-40-41-42-44-45-48-27-32-26-6-67))))
+ (dev     (flags (:standard -w +a-4-9-40-41-42-44-45-48-27-32-26-6-67-69)))
+ (release (flags (:standard -w +a-4-9-40-41-42-44-45-48-27-32-26-6-67-69))))
 
 (copy_files# utils/*.ml{,i})
 (copy_files# file_formats/*.ml{,i})
